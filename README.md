@@ -2,7 +2,9 @@
 
 ## Dataset
 
-The data set are in the `Edina-DR` directory. The three folders under it are for:
+Original self-dialogue corpus Edina can be obtained [here](https://github.com/jfainberg/self_dialogue_corpus).
+
+The new proposed dataset are in the `Edina-DR` directory. The three folders under it are for:
 
 * `Edina-DR`: Argument pairs extracted from Edina dataset
 * `Edina-DR_NLU`: Argument pairs and dialogue features extracted Natural Language Understanding modules
@@ -35,5 +37,19 @@ The human annotation include:
   author={Ma, Mingyu Derek and Bowden, Kevin and Wu, Jiaqi and Cui, Wen and Walker, Marilyn},
   booktitle={Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL)},
   year={2019}
+}
+
+@article{fainberg2018talking,
+  title={Talking to myself: self-dialogues as data for conversational agents},
+  author={Fainberg, Joachim and Krause, Ben and Dobre, Mihai and Damonte, Marco and Kahembwe, Emmanuel and Duma, Daniel and Webber, Bonnie and Fancellu, Federico},
+  journal={arXiv preprint arXiv:1809.06641},
+  year={2018}
+}
+
+@article{krause2017edina,
+  title={Edina: Building an Open Domain Socialbot with Self-dialogues},
+  author={Krause, Ben and Damonte, Marco and Dobre, Mihai and Duma, Daniel and Fainberg, Joachim and Fancellu, Federico and Kahembwe, Emmanuel and Cheng, Jianpeng and Webber, Bonnie},
+  journal={Alexa Prize Proceedings},
+  year={2017}
 }
 ```
