@@ -2,13 +2,14 @@
 
 ## Dataset
 
-Original self-dialogue corpus Edina can be obtained [here](https://github.com/jfainberg/self_dialogue_corpus).
-
 The new proposed dataset are in the `Edina-DR` directory. The three folders under it are for:
 
 * `Edina-DR`: Argument pairs extracted from Edina dataset
 * `Edina-DR_NLU`: Argument pairs and dialogue features extracted Natural Language Understanding modules
-* `Edina-DR_NLU_human-annotation`: 400 samples selected from the samples in `Edina-DR_NLU` and annotated by human
+* `Edina-DR_NLU_separate`: 400 samples randomly selected from the samples in `Edina-DR_NLU` and annotated by human, and corresponding training set
+* `Edina-DR_NLU_separate_balanced`: 400 samples (100 for each relation) selected from the samples in `Edina-DR_NLU` and annotated by human, and corresponding training set
+
+Note: training set is too large for `Edina-DR_NLU_separate` and `Edina-DR_NLU_separate_balanced`. The full version is available [here](https://drive.google.com/drive/folders/19VdM6rw6IKLuMw47Zbv_jr4k2bLOk-o0?usp=sharing).
 
 The column names across all files in `Edina-DR` and `Edina-DR_NLU` stands for:
 
@@ -29,14 +30,42 @@ The human annotation include:
 * Discourse relation identified by expert annotater (`relation_human` field)
 * Whether this pair of arugments do not hold a discourse relation due to grammar error (`error_human` field is `y`)
 
+## Dataset Construction
+
+1. Get original self-dialogue corpus Edina can be obtained [here](https://github.com/jfainberg/self_dialogue_corpus)
+2. Rename the folder containing data to `Edina` and put on the root directory
+3. Run the following command to generate the dataset with discourse relation labels
+
+```
+python construct.py
+```
+
+## Evaluation and Feature Selection
+
+For the feature-based classifier using logistic regression, run the following command. Features used in the model can be selected by changing the lists `selected_feat_dialogue` and `selected_feat_dialogue_indirect`.
+
+```
+python eval.py
+```
+
 ## Cite
 
 ```
-@inproceedings{ma2019implicit,
-  title={Implicit Discourse Relation Identification for Open-domain Dialogues},
-  author={Ma, Mingyu Derek and Bowden, Kevin and Wu, Jiaqi and Cui, Wen and Walker, Marilyn},
-  booktitle={Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL)},
-  year={2019}
+@inproceedings{ma-etal-2019-implicit,
+    title = "Implicit Discourse Relation Identification for Open-domain Dialogues",
+    author = "Ma, Mingyu Derek  and
+      Bowden, Kevin  and
+      Wu, Jiaqi  and
+      Cui, Wen  and
+      Walker, Marilyn",
+    booktitle = "Proceedings of the 57th Conference of the Association for Computational Linguistics",
+    month = jul,
+    year = "2019",
+    address = "Florence, Italy",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/P19-1065",
+    pages = "666--672",
+    abstract = "Discourse relation identification has been an active area of research for many years, and the challenge of identifying implicit relations remains largely an unsolved task, especially in the context of an open-domain dialogue system. Previous work primarily relies on a corpora of formal text which is inherently non-dialogic, i.e., news and journals. This data however is not suitable to handle the nuances of informal dialogue nor is it capable of navigating the plethora of valid topics present in open-domain dialogue. In this paper, we designed a novel discourse relation identification pipeline specifically tuned for open-domain dialogue systems. We firstly propose a method to automatically extract the implicit discourse relation argument pairs and labels from a dataset of dialogic turns, resulting in a novel corpus of discourse relation pairs; the first of its kind to attempt to identify the discourse relations connecting the dialogic turns in open-domain discourse. Moreover, we have taken the first steps to leverage the dialogue features unique to our task to further improve the identification of such relations by performing feature ablation and incorporating dialogue features to enhance the state-of-the-art model.",
 }
 
 @article{fainberg2018talking,
